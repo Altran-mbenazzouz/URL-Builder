@@ -1,0 +1,225 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+		
+		<h2 class="page-header"> PSA KRUX URL Builder </h2>
+
+		<div class="row">
+          <div class="col-md-6">
+            <p>
+              <label for="country" class="control-label">Country*</label>
+              <select class="form-control" type="required" id="country">
+                <option disabled selected value>Select value...</option>
+               {% for countries in country |sort %}
+				<option value="{{ countries.Value }}">{{ countries.Country }}</option>	
+				{% endfor %}
+              </select>
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              <label for="brand" class="control-label">Brand*</label>
+              <select class="form-control" type="required" id="brand">
+                <option disabled selected value>Select value...</option>
+               	{% for brands in brand %}
+				<option value="{{ brands.Value }}">{{ brands.Brand }}</option>	
+				{% endfor %}
+              </select>
+            </p>
+          </div>
+        </div>
+		<hr />
+
+		<div class="row">
+          <div class="col-md-8">
+            <p>
+              <label for="landingPage" class="control-label popoverdata" data-html="true" data-content="Insert the landing page URL <u>without</u> the UTM tracking parameters. This tool automatically generates them." data-toggle="popover" data-placement="top" data-trigger="hover">Landing page*</label>
+              <input type="text" class="form-control required" id="landingPage" placeholder="URL of the landing page">
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <p>
+              <label for="campaignName" class="control-label popoverdata" data-html="true" data-content="Requirements : set in english, lower case, no special characters, maximum 80 characters <br/> Ex:'coupon-offer' // '208-style-special-edition'" data-toggle="popover" data-placement="top" data-original-title="Specify the campaign name accordingly to your past campaign name" data-trigger="hover">Campaign name*</label>
+              <input type="text" class="form-control required" id="campaignName" placeholder="Add a campaign name">
+            </p>
+          </div>
+        </div>
+
+
+        <div class="row">
+		
+			<div class="col-md-4">
+	            <p>
+	              <label for="CorL" class="control-label">Audience*</label>
+	              <select class="form-control" type="required" id="CorL">
+	                <option disabled selected value>Select value...</option>
+	               {% for audiences in audience %}
+					    <option value='{{ audiences.Value }}'>{{ audiences.Audience }}</option>	
+					{% endfor %}	
+	              </select>
+	            </p>
+	          </div>
+		  
+			   <div class="col-md-4">
+	            <p>
+	              <label for="productCategory" class="control-label popoverdata" data-html="true" data-placement="right">Product category*</label>
+	              <select class="form-control" type="required" id="productCategory">
+	                <option disabled selected value>Select value...</option>
+	                {% for products in product %}
+					    <option value='{{ products.ProductCategory }}'>{{ products.ProductCategory }}</option>	
+					{% endfor %}
+	              </select>
+	            </p>
+	          </div>
+
+	      </div>
+
+	      <div class="row">
+		
+			<div class="col-md-4">
+	            <p>
+	              <label for="vehicle" class="control-label">Vehicle*</label>
+	              <select class="form-control" type="required" id="vehicle">
+	                <option disabled selected value>Select value...</option>
+	                {% for vehicles in vehicle%}
+					    	<option value="{{ vehicles.Vehicle }}">{{ vehicles.Vehicle }}</option>	
+					 {% endfor %}
+	              </select>
+	            </p>
+	          </div>
+		  
+			   <div class="col-md-4">
+	            <p>
+	              <label for="context" class="control-label popoverdata" data-html="true" rel="popover" data-placement="right" data-trigger="hover">Context*</label>
+	              <select class="form-control" type="required" id="context">
+	                <option disabled selected value>Select value...</option>
+	     			{% for contexts in context %}
+					    	<option value="{{ contexts.Context }}">{{ contexts.Context }}</option>	
+					 {% endfor %}
+
+	              </select>
+	            </p>
+	          </div>
+
+	      </div>
+
+
+	      <div class="row">
+          <div class="col-md-3">
+            <p>
+              <label for="campaignGoal" class="control-label">Campaign goal*</label>
+              <select class="form-control" type="required" id="campaignGoal">
+                <option disabled="" selected="" value="">Select value...</option>
+                {% for campaigns in campaign %}
+					    	<option value="{{ campaigns.Value }}">{{ campaigns.CampagnGoal }}</option>	
+				{% endfor %}
+              </select>
+            </p>
+          </div>
+
+          <div class="col-md-3">
+            <p>
+              <label for="communicationMedium" class="control-label">Communication medium*</label>
+              <select class="form-control" type="required" id="communicationMedium">
+                <option disabled="" selected="" value="">Select value...</option>
+        		{% for communications in communication %}
+					    	<option value="{{ communications.Value }}">{{ communications.CommunicationMedium }}</option>	
+				{% endfor %}
+		
+              </select>
+            </p>
+          </div>
+
+          <div class="col-md-3">
+            <p>
+              <label for="source" class="control-label">Source*</label>
+            <!-- <input type="text" class="form-control required" id="source" placeholder="email, facebook, ..."> -->
+			<select class="form-control" type="required" id="source">
+                <option disabled="" selected="" value="">Select value...</option>
+                {% for sources in source %}
+                	<option value="{{ sources.Source }}"> {{ sources.Source }} </option>
+                {% endfor %}
+             </select> 
+            </p>
+          </div>
+
+          <div class="col-md-3" style="">
+            <p>
+              <label for="content" class="control-label">Content</label>
+              <input type="text" class="form-control" id="content" placeholder="CTA, textlink, ...">
+            </p>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-3">
+            <p><label for="addCRMID" class="control-label">Add CRM ID?</label>
+              </p><div class="radio">
+                <label class="radio-inline"><input type="radio" name="addCRMID" value="Yes" checked="">Yes</label>
+                <label class="radio-inline"><input type="radio" name="addCRMID" value="No"> No</label>
+              </div>
+            <p></p>
+          </div>
+
+          <div class="col-md-4">
+            <p><label for="encode" class="control-label">Encode the landing page URL?</label>
+              </p><div class="radio">
+                <label class="radio-inline"><input type="radio" name="encode" value="Yes" checked="">Yes</label>
+                <label class="radio-inline"><input type="radio" name="encode" value="No">No</label>
+              </div>
+            <p></p>
+          </div>
+
+
+        </div>
+
+
+        <p>
+          <button type="button" class="btn btn-primary" id="generate"> Generate Trackers </button>
+        </p>
+
+
+        <div id="trackers" style="display: none;">
+	        <p><label for="result" class="control-label">Click tracked URL  </label>
+	            <textarea class="form-control" id="result" rows="6"> </textarea>	          
+	         </p>
+
+	         <p><label for="openPixel" class="control-label">Email open pixel </label>
+            <textarea class="form-control" id="openPixel" rows="6"></textarea>
+          	</p>
+
+          	<p class="userMatchPixel"><label for="userMatchPixel" class="control-label">User match pixel </label>
+            <textarea class="form-control" id="userMatchPixel" rows="6"></textarea>
+          </p>
+          <button type="button" class="btn btn-warning" id="clone" > Clone 
+	       <span class="glyphicon glyphicon-copy" aria-hidden="true" ></span></button>
+
+        </div>
+
+
+       
+
+         <div > 
+	         <table class="table table-bordered" id="listTrackers" > 
+		         <thead class="thead-dark"> 
+		         	<th> Click tracked URL</th> <th>Email open pixel</th> <th>User match pixel</th> </tr> 
+		         </thead> 
+		         <tbody> 
+			         		          
+		         </tbody> 
+	         </table>
+         </div>
+         
+
+
+
+
+
+{% endblock %}
