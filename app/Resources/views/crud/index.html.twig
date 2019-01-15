@@ -4,7 +4,9 @@
 {% block body %}
 
 		
-		<h2 class="page-header"> PSA KRUX URL Builder </h2>
+		<h2 class="page-header"> PSA URL Builder </h2>
+
+		 <div id="cont-spechError"> </div>
 
 		<div class="row">
           <div class="col-md-6">
@@ -13,8 +15,8 @@
               <select class="form-control" type="required" id="country">
                 <option disabled selected value>Select value...</option>
                {% for countries in country |sort %}
-				<option value="{{ countries.Value }}">{{ countries.Country }}</option>	
-				{% endfor %}
+				          <option value="{{ countries.Value }}">{{ countries.Country }}</option>	
+				      {% endfor %}
               </select>
             </p>
           </div>
@@ -43,7 +45,7 @@
           <div class="col-md-4">
             <p>
               <label for="campaignName" class="control-label popoverdata" data-html="true" data-content="Requirements : set in english, lower case, no special characters, maximum 80 characters <br/> Ex:'coupon-offer' // '208-style-special-edition'" data-toggle="popover" data-placement="top" data-original-title="Specify the campaign name accordingly to your past campaign name" data-trigger="hover">Campaign name*</label>
-              <input type="text" class="form-control required" id="campaignName" placeholder="Add a campaign name">
+              <input type="text" class="form-control required" id="campaignName" placeholder="Add a campaign name" >
             </p>
           </div>
         </div>
@@ -89,8 +91,7 @@
 					 {% endfor %}
 	              </select>
 	            </p>
-	          </div>
-		  
+	          </div>		  
 			   <div class="col-md-4">
 	            <p>
 	              <label for="context" class="control-label popoverdata" data-html="true" rel="popover" data-placement="right" data-trigger="hover">Context*</label>
@@ -105,7 +106,7 @@
 	          </div>
 
 	      </div>
-
+	        <hr />
 
 	      <div class="row">
           <div class="col-md-3">
@@ -176,10 +177,12 @@
               </div>
             <p></p>
           </div>
-
-
         </div>
 
+
+
+
+          <hr />
 
         <p>
           <button type="button" class="btn btn-primary" id="generate"> Generate Trackers </button>
@@ -187,39 +190,39 @@
 
 
         <div id="trackers" style="display: none;">
-	        <p><label for="result" class="control-label">Click tracked URL  </label>
-	            <textarea class="form-control" id="result" rows="6"> </textarea>	          
+	        <p><label for="result" class="control-label">Click tracked URL (to copy paste in HTML email code) </label> <button type="button" class="btn btn-default pull-right" onclick="CopyResult()"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span> </button>
+	            <textarea class="form-control" id="result" rows="5"> </textarea>	          
 	         </p>
+	         <div id="textCopied" style="display: none; color: red;"> Click tracked URL Has been copied </div>
 
-	         <p><label for="openPixel" class="control-label">Email open pixel </label>
-            <textarea class="form-control" id="openPixel" rows="6"></textarea>
+	         <p><label for="openPixel" class="control-label">Email open pixel (to copy paste in HTML email code before &lt;/body&gt; tag)</label>
+            <textarea class="form-control" id="openPixel" rows="4"></textarea>
           	</p>
 
-          	<p class="userMatchPixel"><label for="userMatchPixel" class="control-label">User match pixel </label>
-            <textarea class="form-control" id="userMatchPixel" rows="6"></textarea>
+          	<p class="userMatchPixel"><label for="userMatchPixel" class="control-label">User match pixel (to copy paste in HTML email code before &lt;/body&gt; tag)</label>
+            <textarea class="form-control" id="userMatchPixel" rows="4"></textarea>
           </p>
-          <button type="button" class="btn btn-warning" id="clone" > Clone 
-	       <span class="glyphicon glyphicon-copy" aria-hidden="true" ></span></button>
+        </div>       
 
-        </div>
+         <div> 
+	         <table class="table table-bordered" id="listTrackers" style="display: none;">
 
-
-       
-
-         <div > 
-	         <table class="table table-bordered" id="listTrackers" > 
 		         <thead class="thead-dark"> 
-		         	<th> Click tracked URL</th> <th>Email open pixel</th> <th>User match pixel</th> </tr> 
+		         	<th style="width:10%;"> Campaign Name </th>
+ 					<th> Click tracked URL</th> <th>Email open pixel</th> <th>User match pixel</th> </tr> 
 		         </thead> 
 		         <tbody> 
 			         		          
 		         </tbody> 
 	         </table>
          </div>
-         
 
+    {% for key,adress in urlAdress %}
 
-
+		 <div id="id-{{key}}" data-is-authenticated="{{ adress.UrlAdress }}">
+		   
+		</div>
+	{% endfor %}
 
 
 {% endblock %}

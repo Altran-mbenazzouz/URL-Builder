@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ProductCategory
+ * UrlAdress
  *
- * @ORM\Table(name="product_category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductCategoryRepository")
+ * @ORM\Table(name="url_adress")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UrlAdressRepository")
  */
-class ProductCategory
+class UrlAdress
 {
     /**
      * @var int
@@ -24,11 +24,11 @@ class ProductCategory
     /**
      * @var string
      *
-     * @ORM\Column(name="Product_category", type="string", length=255)
+     * @ORM\Column(name="UrlAdress", type="string", length=255)
      */
-    private $productCategory;
+    private $urlAdress;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="Value", type="string", length=255)
@@ -37,7 +37,7 @@ class ProductCategory
 
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -47,27 +47,27 @@ class ProductCategory
     }
 
     /**
-     * Set productCategory
+     * Set urlAdress.
      *
-     * @param string $productCategory
+     * @param string $urlAdress
      *
-     * @return ProductCategory
+     * @return UrlAdress
      */
-    public function setProductCategory($productCategory)
+    public function setUrlAdress($urlAdress)
     {
-        $this->productCategory = $productCategory;
+        $this->urlAdress = $urlAdress;
 
         return $this;
     }
 
     /**
-     * Get productCategory
+     * Get urlAdress.
      *
      * @return string
      */
-    public function getProductCategory()
+    public function getUrlAdress()
     {
-        return $this->productCategory;
+        return $this->urlAdress;
     }
 
     /**
@@ -75,7 +75,7 @@ class ProductCategory
      *
      * @param string $value
      *
-     * @return ProductCategory
+     * @return UrlAdress
      */
     public function setValue($value)
     {

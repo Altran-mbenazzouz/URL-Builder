@@ -11,6 +11,7 @@ use AppBundle\Entity\CommunicationMedium;
 use AppBundle\Entity\Context;
 use AppBundle\Entity\ProductCategory;
 use AppBundle\Entity\Audience;
+use AppBundle\Entity\UrlAdress;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,6 +56,9 @@ class BuilderController extends Controller
          $source = $this->getDoctrine()
                     ->getRepository('AppBundle:Source')
                     ->findAll();
+        $urlAdress= $this->getDoctrine()
+                    ->getRepository('AppBundle:UrlAdress')
+                    ->findAll();
 
 
         return $this->render('crud/details.html.twig', array(
@@ -66,7 +70,8 @@ class BuilderController extends Controller
             'context'=> $context,
             'campagn_goal'=>$campagn_goal,
             'communication_medium'=>$communication_medium,
-            'source'=> $source
+            'source'=> $source,
+            'urlAdress'=>$urlAdress
             ));
     }
 
@@ -111,7 +116,9 @@ class BuilderController extends Controller
                     ->getRepository('AppBundle:Source')
                     ->findAll();
 
-
+        $urlAdress= $this->getDoctrine()
+                    ->getRepository('AppBundle:UrlAdress')
+                    ->findAll();
 
         return $this->render('crud/index.html.twig', array(
                 'country'=> $country,
@@ -123,6 +130,7 @@ class BuilderController extends Controller
                 'campaign' => $campaign,
                 'communication'=> $communication,
                 'source'=> $source,
+                'urlAdress'=>$urlAdress
                 
                 ));
 
@@ -161,6 +169,9 @@ class BuilderController extends Controller
                 break;
             case $champ== 'Source':
                 $new = new Source;
+                break;
+            case $champ== 'UrlAdress':
+                $new = new UrlAdress;
                 break;
             }
 
@@ -284,4 +295,18 @@ class BuilderController extends Controller
                 ));
 
     }
+
+
+
+    /**
+     * @Route("/crud/login", name="Builder_login")
+     */
+    public function loginAction(Request $request)
+    {   
+
+       return $this->render('crud/login.html.twig');
+
+       
+    }
+
 }

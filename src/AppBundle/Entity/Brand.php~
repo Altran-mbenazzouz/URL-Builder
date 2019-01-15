@@ -35,39 +35,11 @@ class Brand
      */
     private $value;
 
-
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    * @ORM\ManyToMany(targetEntity="Confid", mappedBy="brands")
+    */
+    private $confids;
 
-    /**
-     * Set brand
-     *
-     * @param string $brand
-     *
-     * @return Brand
-     */
-    public function setBrand($brand)
-    {
-        $this->brand = $brand;
 
-        return $this;
-    }
 
-    /**
-     * Get brand
-     *
-     * @return string
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
 }
-

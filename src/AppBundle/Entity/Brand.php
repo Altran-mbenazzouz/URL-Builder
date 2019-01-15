@@ -35,9 +35,23 @@ class Brand
      */
     private $value;
 
+    /**
+    * @ORM\ManyToMany(targetEntity="Confid", mappedBy="brands")
+    */
+    private $confids;
+
+
 
     /**
-     * Get id
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->confids = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id.
      *
      * @return int
      */
@@ -47,7 +61,7 @@ class Brand
     }
 
     /**
-     * Set brand
+     * Set brand.
      *
      * @param string $brand
      *
@@ -61,7 +75,7 @@ class Brand
     }
 
     /**
-     * Get brand
+     * Get brand.
      *
      * @return string
      */
@@ -92,5 +106,41 @@ class Brand
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Add confid.
+     *
+     * @param \AppBundle\Entity\Confid $confid
+     *
+     * @return Brand
+     */
+    public function addConfid(\AppBundle\Entity\Confid $confid)
+    {
+        $this->confids[] = $confid;
+
+        return $this;
+    }
+
+    /**
+     * Remove confid.
+     *
+     * @param \AppBundle\Entity\Confid $confid
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeConfid(\AppBundle\Entity\Confid $confid)
+    {
+        return $this->confids->removeElement($confid);
+    }
+
+    /**
+     * Get confids.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConfids()
+    {
+        return $this->confids;
     }
 }

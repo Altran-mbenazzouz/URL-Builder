@@ -35,39 +35,11 @@ class Country
      */
     private $value;
 
-
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    * @ORM\ManyToMany(targetEntity="Confid", mappedBy="countries")
+    **/
+    private $confids;
 
-    /**
-     * Set country
-     *
-     * @param string $country
-     *
-     * @return Country
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
 
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
+    
 }
-

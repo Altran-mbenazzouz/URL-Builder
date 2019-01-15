@@ -17,6 +17,8 @@
     <li><a href="#menu6">Campaign Goal</a></li>
     <li><a href="#menu7">Communication Medium</a></li>
     <li><a href="#menu8">Source</a></li>
+    <li><a href="#menu9">Url Address</a></li>
+    <li><a href="#menu10">ConfID</a></li>
 
 
     
@@ -352,8 +354,8 @@
 		</table>
 
     </div>
-     <div id="menu8" class="tab-pane fade">
-      
+
+     <div id="menu8" class="tab-pane fade">      
       <table class="table table-striped" col-md-4">
 		  <thead> 
 			  <tr>			  
@@ -390,8 +392,81 @@
 			{% endfor %}
 		 </tbody>
 		</table>
+    </div>
 
+    <div id="menu9" class="tab-pane fade">      
+      <table class="table table-striped" col-md-4">
+		  <thead> 
+			  <tr>			  
+				  <th>Url</th>				  
+				  <th>
+					  
+					  	<a href="/crud/create/UrlAdress" class="btn btn-primary">Create 
+					  		<span class="glyphicon glyphicon-new-window"></span></a>  
+				  	 
+			  	 </th>
+			  	   
+		  	  </tr> 
+		  </thead>
+		  <tbody>
+		  	{% for adress in urlAdress %}
+			  <tr> 
+			  	<td> {{ adress.UrlAdress }}
+			  	</td>			  		
+			  		<td>
+					  	<a href="/crud/edit/{{ adress.id }}/UrlAdress" title="Edit">
+			          		<span class="glyphicon glyphicon-edit"></span>
+			        	</a>
+				  		&nbsp;&nbsp;&nbsp;&nbsp;
+				  		&nbsp;&nbsp;&nbsp;&nbsp;
+					  	<a href="/crud/delete/{{ adress.id }}/UrlAdress" title="Remove">
+			          		<span class="glyphicon glyphicon-remove"></span>
+			        	</a>
+				  	</td>			  	  	
+			  </tr>
+			{% endfor %}
+		 </tbody>
+		</table>
+    </div>
 
+    <div id="menu10" class="tab-pane fade">
+      
+      <table class="table table-striped" col-md-4">
+		  <thead> 
+			  <tr>			  
+				  <th>ConfiD</th>
+				  <th>Code</th>	
+					  <th>
+						  
+						  	<a href="/crud/create/createConfId" class="btn btn-primary">Create
+						  		<span class="glyphicon glyphicon-new-window"></span></a>  
+					  	 
+				  	 </th>		   
+		  		</tr> 
+		  </thead>
+		  <tbody>
+		  	{% for confids in confid %}
+			  <tr> 
+			  	<td> {{ confids.value }}
+			  	</td>
+		  		<td> {{ confids.code }}		  		
+	  			</td>
+		  		<td>
+				  	<a href="/crud/edit/{{ confids.id }}/CommunicationMedium" title="Edit">
+		          		<span class="glyphicon glyphicon-edit"></span>
+		        	</a>
+			  		&nbsp;&nbsp;&nbsp;&nbsp;
+			  		&nbsp;&nbsp;&nbsp;&nbsp;
+				  	<a href="/crud/delete/{{ confids.id }}/CommunicationMedium" title="Remove">
+		          		<span class="glyphicon glyphicon-remove"></span>
+		        	</a>
+			  	</td>
+
+			  	  	
+			  </tr>
+			{% endfor %}
+		 </tbody>
+		</table>
     </div>
 
   </div>
